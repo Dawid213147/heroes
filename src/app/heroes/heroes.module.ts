@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeroesRoutingModule } from './heroes-routing.module';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [HeroesComponent, HeroDetailComponent],

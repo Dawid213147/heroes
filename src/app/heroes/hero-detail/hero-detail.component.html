@@ -6,6 +6,12 @@
       <input [(ngModel)]="hero.name" placeholder="name"/>
     </label>
   </div>
+  <div>
+      <nav>
+        <a routerLink="{{hero.id}}/equipment">equipment</a>
+      </nav>
+  </div>
   <button (click)="goBack()">go back</button>
   <button (click)="save()">save</button>
 </div>
+
