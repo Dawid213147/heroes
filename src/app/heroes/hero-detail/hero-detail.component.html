@@ -9,7 +9,7 @@
   <button (click)="goBack()">go back</button>
   <button (click)="save()">save</button>
   <nav>
-    <a routerLink="../equipment">equipment</a>
+    <a [routerLink]="['equipment', hero.id]">equipment</a>
   </nav>
   <router-outlet></router-outlet>
 </div>
