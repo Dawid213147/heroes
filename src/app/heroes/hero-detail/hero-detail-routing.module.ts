@@ -9,7 +9,8 @@ const routes: Routes = [
     children: [
       {
         path: 'equipment/:id',
-        loadChildren: () => import('../heroes-equipment/heroes-equipment.module').then(m => m.HeroesEquipmentModule)
+        loadChildren: () => import('../heroes-equipment/heroes-equipment.module').then(m => m.HeroesEquipmentModule),
+        data: { preload: true }
       }
     ]
   }

@@ -4,7 +4,11 @@ import { HeroesComponent } from './heroes.component';
 
 const routes: Routes = [
   { path: '', component: HeroesComponent },
-  { path: ':id', loadChildren: () => import('./hero-detail/hero-detail.module').then(m => m.HeroDetailModule) }
+  {
+    path: ':id',
+    loadChildren: () => import('./hero-detail/hero-detail.module').then(m => m.HeroDetailModule),
+    data: { preload: true }
+  }
 ];
 
 @NgModule({
