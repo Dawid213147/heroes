@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: ':id',
     loadChildren: () => import('./hero-detail/hero-detail.module').then(m => m.HeroDetailModule),
-    data: { preload: true }
+    data: { preload: true , animation: 'hero'}
   }
 ];
 

@@ -6,10 +6,10 @@
       <input [(ngModel)]="hero.name" placeholder="name"/>
     </label>
   </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
   <nav>
     <a [routerLink]="['equipment', hero.id]">equipment</a>
   </nav>
+  <button (click)="goBack()">cancel</button>
+  <button (click)="save()">save</button>
   <router-outlet></router-outlet>
 </div>
