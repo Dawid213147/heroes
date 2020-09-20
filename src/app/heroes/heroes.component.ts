@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
 
@@ -8,24 +9,27 @@ import { HeroService } from './hero.service';
   styleUrls: ['./heroes.component.css']
 })
 
-export class HeroesComponent implements OnInit {
+export class HeroesComponent implements OnInit, OnDestroy {
 
   selectedHero: Hero;
-
   heroes: Hero[];
+  sub: Subscription;
 
   constructor(private heroService: HeroService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getHeroes();
   }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 
-  getHeroes(): void {
-    this.heroService.getHeroes()
+  getHeroes() {
+    this.sub = this.heroService.getHeroes()
       .subscribe(heroes => this.heroes = heroes);
   }
 
-  add(name: string): void {
+  add(name: string) {
     name = name.trim();
     if (!name) { return; }
     this.heroService.addHero({ name } as Hero)
@@ -34,8 +38,12 @@ export class HeroesComponent implements OnInit {
       });
   }
 
-  delete(hero: Hero): void {
+  delete(hero: Hero) {
     this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.deleteHero(hero).subscribe();
+  }
+
+  trackBy(hero: Hero): number {
+    return hero.id;
   }
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 import { ActivatedRoute } from '@angular/router';
@@ -7,9 +7,12 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-heroes-equipment',
   templateUrl: './heroes-equipment.component.html',
-  styleUrls: ['./heroes-equipment.component.css']
+  styleUrls: ['./heroes-equipment.component.css'],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class HeroesEquipmentComponent implements OnInit {
+
+  @Input() hero: Hero;
 
   constructor(
     private route: ActivatedRoute,
@@ -17,19 +20,17 @@ export class HeroesEquipmentComponent implements OnInit {
     private location: Location
   ) {}
 
-  @Input() hero: Hero;
-
-  ngOnInit(): void {
+  ngOnInit() {
     this.getHero();
   }
 
-  getHero(): void {
+  getHero() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
   }
 
-  goBack(): void {
+  goBack() {
     this.location.back();
   }
 
