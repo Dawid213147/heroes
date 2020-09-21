@@ -11,29 +11,29 @@ import { HeroService } from '../hero.service';
 })
 export class HeroDetailComponent implements OnInit {
 
+  @Input() hero: Hero;
+
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location
   ) {}
 
-  @Input() hero: Hero;
-
-  ngOnInit(): void {
+  ngOnInit() {
     this.getHero();
   }
 
-  getHero(): void {
+  getHero() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.heroService.getHero(id)
       .subscribe(hero => this.hero = hero);
   }
 
-  goBack(): void {
+  goBack() {
     this.location.back();
   }
 
-  save(): void {
+  save() {
     this.heroService.updateHero(this.hero)
       .subscribe(() => this.goBack());
   }
