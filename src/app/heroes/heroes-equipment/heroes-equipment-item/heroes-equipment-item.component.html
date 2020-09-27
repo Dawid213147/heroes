@@ -1,0 +1,9 @@
+<div *ngIf="Item">
+    <h2>{{Item.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{Item.id}}</div>
+    <div>
+      <label>name:
+        <input [(ngModel)]="Item.name" placeholder="name"/>
+      </label>
+    </div>
+  </div>

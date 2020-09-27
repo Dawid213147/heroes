@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
-import { ActivatedRoute } from '@angular/router';
+import { ChangeDetectionStrategy, Component} from '@angular/core';
 import { Location } from '@angular/common';
+import { OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-heroes-equipment',
@@ -12,26 +13,23 @@ import { Location } from '@angular/common';
 })
 export class HeroesEquipmentComponent implements OnInit {
 
-  @Input() hero: Hero;
+  private equipmentID: Observable<string>;
 
   constructor(
-    private route: ActivatedRoute,
-    private heroService: HeroService,
-    private location: Location
+    private location: Location,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.getHero();
+    this.equipmentID = this.route
+      .queryParamMap
+      .pipe(map(params => params.get('equipmsentID') || 'None'));
+    console.log(this.equipmentID);
   }
 
-  getHero() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
-  }
-
-  goBack() {
+  cancel() {
     this.location.back();
+    console.log(this.equipmentID);
   }
 
 }

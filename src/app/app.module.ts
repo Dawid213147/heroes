@@ -10,7 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './heroes/hero-search/hero-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from './http-interceptors/auth-interceptor';
-import { MyLoaderComponent } from './components/my-loader/my-loader.component';
+import { MyLoaderComponent } from './shared/my-loader/my-loader.component';
 import { LoaderService } from './services/loader.service';
 import { LoaderInterceptor } from './http-interceptors/loader-interceptor';
 

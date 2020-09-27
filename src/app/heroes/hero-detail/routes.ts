@@ -7,7 +7,7 @@ export const routes: Routes = [
       component: HeroDetailComponent,
       children: [
         {
-          path: 'equipment/:id',
+          path: 'equipment',
           loadChildren: () => import('../heroes-equipment/heroes-equipment.module').then(m => m.HeroesEquipmentModule),
           data: { preload: true }
         }
