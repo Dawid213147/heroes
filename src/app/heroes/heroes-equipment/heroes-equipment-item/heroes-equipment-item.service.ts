@@ -16,13 +16,24 @@ export class HeroesEqipmentItemService {
   /**
    * @param id
    */
-  getEqipmentItem(id: number): Observable<HeroEquipmentItem> {
-    const url = `${this.eqipmentUrl}/${id}`;
-    return this.http.get<HeroEquipmentItem>(url).pipe(
-      catchError(this.handleError<HeroEquipmentItem>(`getEqipmentItem id=${id}`))
-    );
+  getEqipmentItems(ids: number[]): Observable<HeroEquipmentItem[]> {
+    if(ids.length) {
+       return this.http.get<HeroEquipmentItem[]>(this.generateAPIUrl(ids))
+      .pipe(
+        catchError(this.handleError<HeroEquipmentItem[]>('getHeroes', []))
+      );
+    }
   }
 
+  private generateAPIUrl(ids: number[]): string {
+    var url = `${this.eqipmentUrl}?`;
+
+    ids.forEach(element => {
+      url = url + 'id=' + element + '&';
+    });
+
+    return url;
+  }
 
   /**
    * @param operation 

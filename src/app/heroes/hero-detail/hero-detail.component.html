@@ -7,7 +7,7 @@
     </label>
   </div>
   <nav>
-    <a [routerLink]="['equipment']" [queryParams]="{equipmentID: 'someDataIndex'| json}">equipment</a>
+    <a [routerLink]="['equipment']" [queryParams]="{itemID: hero.equipmentID}">equipment</a>
   </nav>
   <button (click)="goBack()">go back</button>
   <button (click)="save()">save</button>

@@ -13,6 +13,7 @@ import { AuthInterceptor } from './http-interceptors/auth-interceptor';
 import { MyLoaderComponent } from './shared/my-loader/my-loader.component';
 import { LoaderService } from './services/loader.service';
 import { LoaderInterceptor } from './http-interceptors/loader-interceptor';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoaderInterceptor } from './http-interceptors/loader-interceptor';
     CommonModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSidenavModule
   ],
   providers: [
     LoaderService,

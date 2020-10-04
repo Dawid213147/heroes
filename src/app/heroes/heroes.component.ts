@@ -20,6 +20,7 @@ export class HeroesComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.getHeroes();
   }
+  
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

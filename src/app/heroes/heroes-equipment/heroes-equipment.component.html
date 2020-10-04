@@ -1,3 +1,7 @@
 <h2>Equipment</h2>
-
-<button (click)="cancel()">Remove</button>
+<ul class="heroes">
+    <li *ngFor="let item of items">
+     {{item.name}}
+    </li>
+  </ul>
+<button (click)="cancel()">Hide Equipment</button>

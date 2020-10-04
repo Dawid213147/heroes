@@ -11,7 +11,7 @@ import { Input } from '@angular/core';
 })
 export class HeroesEquipmentItemComponent implements OnInit {
 
-  @Input() Item: HeroEquipmentItem;
+  @Input() Item: HeroEquipmentItem[];
 
   constructor(
     private route: ActivatedRoute,
@@ -19,12 +19,12 @@ export class HeroesEquipmentItemComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-    this.getEqipmentItem();
+    // this.getEqipmentItems();
   }
 
   getEqipmentItem() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.heroesEqipmentItemService.getEqipmentItem(id)
+    this.heroesEqipmentItemService.getEqipmentItems([id])
       .subscribe(Item => this.Item = Item);
   }
 
