@@ -2,8 +2,6 @@ import { ChangeDetectionStrategy, Component, OnDestroy} from '@angular/core';
 import { Location } from '@angular/common';
 import { OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { HeroesEqipmentItemService } from './heroes-equipment-item/heroes-equipment-item.service';
 import { HeroEquipmentItem } from './heroes-equipment-item/heroes-equipment-item';
